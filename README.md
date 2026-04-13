@@ -1,0 +1,1 @@
+# panixida-core-result-pattern
