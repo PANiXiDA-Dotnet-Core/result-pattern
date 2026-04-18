@@ -23,6 +23,7 @@ jobs:
           registry-token: ${{ secrets.REGISTRY_TOKEN }}
 
     publish:
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       needs: 
         - format
         - tests
