@@ -11,6 +11,7 @@
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         <AnalysisLevel>latest</AnalysisLevel>
+        <NoWarn>$(NoWarn);NU1507</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(IsPackable)' == 'true'">
