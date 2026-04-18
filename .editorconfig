@@ -136,3 +136,6 @@ dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:sil
 dotnet_style_readonly_field = true:suggestion
 dotnet_diagnostic.IDE0005.severity = error
 dotnet_diagnostic.CS1591.severity = none
+
+[src/**/*.cs]
+dotnet_diagnostic.CS1591.severity = error

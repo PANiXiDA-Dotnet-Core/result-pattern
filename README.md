@@ -6,12 +6,10 @@ It is designed for .NET developers who want predictable result-based workflows, 
 
 ## Status
 
-
-[![Build](https://img.shields.io/badge/build-passing-brightgreen)](#development)
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](#development)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](#development)
-[![NuGet](https://img.shields.io/badge/NuGet-PANiXiDA.Core.ResultPattern-blue)](#installation)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](#license)
+[![CI](https://github.com/PANiXiDA-Dotnet-Core/result-pattern/actions/workflows/ci.yml/badge.svg)](https://github.com/PANiXiDA-Dotnet-Core/result-pattern/actions/workflows/ci.yml)
+[![NuGet](https://img.shields.io/nuget/v/PANiXiDA.Core.ResultPattern.svg)](https://www.nuget.org/packages/PANiXiDA.Core.ResultPattern)
+[![NuGet downloads](https://img.shields.io/nuget/dt/PANiXiDA.Core.ResultPattern.svg)](https://www.nuget.org/packages/PANiXiDA.Core.ResultPattern)
+[![License](https://img.shields.io/github/license/PANiXiDA-Dotnet-Core/result-pattern.svg)](LICENSE)
 
 ## Overview
 
@@ -62,7 +60,7 @@ The library targets `net10.0`.
 <ItemGroup>
   <PackageReference Include="PANiXiDA.Core.ResultPattern" Version="..." />
 </ItemGroup>
-````
+```
 
 ### Minimal import
 
@@ -594,7 +592,6 @@ Potential future improvements:
 * add more advanced composition helpers if a clear use case appears;
 * extend documentation with more domain-oriented examples;
 * add dedicated examples for ASP.NET Core minimal APIs;
-* add package badges with exact CI and NuGet URLs;
 * keep the package as a reusable standard for future PANiXiDA NuGet libraries.
 
 ## Contributing
@@ -648,7 +645,7 @@ Maintained by the PANiXiDA.
 
 Repository:
 
-* `PANiXiDA-Dotnet-Core/panixida-core-result-pattern`
+* `PANiXiDA-Dotnet-Core/result-pattern`
 
 For questions or improvements, use:
 

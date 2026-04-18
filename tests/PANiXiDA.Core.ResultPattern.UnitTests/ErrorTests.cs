@@ -32,6 +32,18 @@ public sealed class ErrorTests
         error.Metadata.Should().BeEmpty();
     }
 
+    [Fact(DisplayName = "Error copy → returns an equivalent new error when copied with record syntax")]
+    public void Copy_Should_ReturnEquivalentNewError_When_RecordWithExpressionIsUsed()
+    {
+        var error = Error.Validation("Validation failed")
+            .WithField("email");
+
+        var copiedError = error with { };
+
+        copiedError.Should().NotBeSameAs(error);
+        copiedError.Should().Be(error);
+    }
+
     [Fact(DisplayName = "Error ctor → throws ArgumentException when message is null")]
     public void Constructor_Should_ThrowArgumentException_When_MessageIsNull()
     {
