@@ -643,7 +643,7 @@ See the [LICENSE](LICENSE) file for details.
 
 ## Maintainers / Contacts
 
-Maintained by the PANiXiDA / Space App team.
+Maintained by the PANiXiDA.
 
 Repository:
 
