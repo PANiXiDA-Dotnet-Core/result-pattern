@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".dockerignore" />
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".github/workflows/ci.yml" />
+    <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="icon.png" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+    <File Path="version.json" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/PANiXiDA.Core.ResultPattern/PANiXiDA.Core.ResultPattern.csproj" Id="aa26d67b-8dcf-443d-9f7f-a78551009115" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PANiXiDA.Core.ResultPattern.UnitTests/PANiXiDA.Core.ResultPattern.UnitTests.csproj" />
+  </Folder>
+</Solution>
