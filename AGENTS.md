@@ -56,9 +56,12 @@ The goal is to keep package structure, CI, versioning, tests, documentation, and
 
 ## Documentation
 
-- Update `README.md` when public behavior changes.
-- Keep installation, target framework, and examples accurate.
-- Keep examples compilable and aligned with the current API.
+- Update `README.md` when public behavior, public API, package metadata, or development workflow changes.
+- Keep the README structure aligned with the repository standard.
+- Keep installation instructions, target framework, badges, and package information accurate.
+- Keep all examples compilable and aligned with the current API.
+- Ensure usage examples reflect real and recommended library usage.
+- Remove outdated or duplicate documentation when updating existing sections.
 
 ## Build and validation
 

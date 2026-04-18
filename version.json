@@ -13,6 +13,7 @@
   "pathFilters": [
     ":/src/PANiXiDA.Core.ResultPattern/",
     ":/Directory.Build.props",
+    ":/Directory.Build.targets",
     ":/Directory.Packages.props",
     ":/global.json",
     ":/version.json",
