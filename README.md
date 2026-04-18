@@ -9,6 +9,7 @@ It is designed for .NET developers who want predictable result-based workflows, 
 [![CI](https://github.com/PANiXiDA-Dotnet-Core/result-pattern/actions/workflows/ci.yml/badge.svg)](https://github.com/PANiXiDA-Dotnet-Core/result-pattern/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/PANiXiDA.Core.ResultPattern.svg)](https://www.nuget.org/packages/PANiXiDA.Core.ResultPattern)
 [![NuGet downloads](https://img.shields.io/nuget/dt/PANiXiDA.Core.ResultPattern.svg)](https://www.nuget.org/packages/PANiXiDA.Core.ResultPattern)
+[![Target Framework](https://img.shields.io/badge/target-net10.0-512BD4)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/github/license/PANiXiDA-Dotnet-Core/result-pattern.svg)](LICENSE)
 
 ## Overview
