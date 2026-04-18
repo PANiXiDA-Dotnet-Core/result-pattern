@@ -71,6 +71,36 @@ public sealed class ResultTests
         result.Errors.Should().Equal(firstError, secondError);
     }
 
+    [Fact(DisplayName = "Result errors → creates a defensive error copy when constructed")]
+    public void Errors_Should_CreateDefensiveCopy_When_ResultIsConstructed()
+    {
+        var firstError = Error.Validation("Validation failed");
+        var secondError = Error.Conflict("Conflict");
+        var errors = new[]
+        {
+            firstError
+        };
+        var result = CreateResult(false, errors);
+
+        errors[0] = secondError;
+
+        result.Errors.Should().ContainSingle().Which.Should().BeSameAs(firstError);
+    }
+
+    [Fact(DisplayName = "Result errors → throws NotSupportedException when errors are cast to a mutable list and modified")]
+    public void Errors_Should_ThrowNotSupportedException_When_CastToMutableListAndModified()
+    {
+        var error = Error.Validation("Validation failed");
+        var result = Result.Failure(error);
+        var errors = result.Errors.Should()
+            .BeAssignableTo<IList<Error>>()
+            .Subject;
+
+        Action act = () => errors[0] = Error.Conflict("Conflict");
+
+        act.Should().Throw<NotSupportedException>();
+    }
+
     [Fact(DisplayName = "Failure(IEnumerable<Error>) → filters out null values when the collection contains null")]
     public void Failure_Should_FilterOutNullErrors_When_ErrorCollectionContainsNullValues()
     {
@@ -133,6 +163,16 @@ public sealed class ResultTests
         exception.ParamName.Should().Be("results");
     }
 
+    [Fact(DisplayName = "Combine → throws ArgumentException when the results array contains null")]
+    public void Combine_Should_ThrowArgumentException_When_ResultsArrayContainsNull()
+    {
+        Action act = () => Result.Combine(Result.Success(), null!);
+
+        var exception = act.Should().Throw<ArgumentException>().Which;
+
+        exception.ParamName.Should().Be("results");
+    }
+
     [Fact(DisplayName = "Combine → returns a successful result when the results array is empty")]
     public void Combine_Should_ReturnSuccessfulResult_When_ResultsArrayIsEmpty()
     {
@@ -182,6 +222,18 @@ public sealed class ResultTests
 
         var exception = act.Should().Throw<TargetInvocationException>()
             .Which.InnerException.Should().BeOfType<ArgumentException>()
+            .Subject;
+
+        exception.ParamName.Should().Be("errors");
+    }
+
+    [Fact(DisplayName = "Result ctor → throws ArgumentNullException when errors are null")]
+    public void Constructor_Should_ThrowArgumentNullException_When_ErrorsAreNull()
+    {
+        Action act = () => _ = CreateResult(true, null!);
+
+        var exception = act.Should().Throw<TargetInvocationException>()
+            .Which.InnerException.Should().BeOfType<ArgumentNullException>()
             .Subject;
 
         exception.ParamName.Should().Be("errors");

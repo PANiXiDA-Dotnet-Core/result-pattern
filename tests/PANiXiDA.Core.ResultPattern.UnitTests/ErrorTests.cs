@@ -19,7 +19,41 @@ public sealed class ErrorTests
         error.Type.Should().Be(ErrorType.Validation);
         error.Metadata.Should().ContainSingle()
             .Which.Should().Be(new KeyValuePair<string, object?>(metadataKey, metadataValue));
-        error.Metadata.Should().BeSameAs(metadata);
+        error.Metadata.Should().NotBeSameAs(metadata);
+    }
+
+    [Fact(DisplayName = "Error ctor → creates a defensive metadata copy when metadata is provided")]
+    public void Constructor_Should_CreateDefensiveMetadataCopy_When_MetadataIsProvided()
+    {
+        const string metadataKey = "code";
+        const int originalMetadataValue = 42;
+        const int changedMetadataValue = 100;
+        var metadata = new Dictionary<string, object?>
+        {
+            [metadataKey] = originalMetadataValue
+        };
+
+        var error = new Error("Validation failed", ErrorType.Validation, metadata);
+
+        metadata[metadataKey] = changedMetadataValue;
+        metadata["extra"] = true;
+
+        error.Metadata.Should().ContainSingle()
+            .Which.Should().Be(new KeyValuePair<string, object?>(metadataKey, originalMetadataValue));
+    }
+
+    [Fact(DisplayName = "Error metadata → throws NotSupportedException when metadata is cast to a mutable dictionary and modified")]
+    public void Metadata_Should_ThrowNotSupportedException_When_CastToMutableDictionaryAndModified()
+    {
+        var error = Error.Validation("Validation failed")
+            .WithMetadata("code", 42);
+        var metadata = error.Metadata.Should()
+            .BeAssignableTo<IDictionary<string, object?>>()
+            .Subject;
+
+        Action act = () => metadata["code"] = 100;
+
+        act.Should().Throw<NotSupportedException>();
     }
 
     [Fact(DisplayName = "Error ctor → creates empty metadata when metadata is not provided")]

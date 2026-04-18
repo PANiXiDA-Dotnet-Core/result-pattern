@@ -1,4 +1,6 @@
-﻿namespace PANiXiDA.Core.ResultPattern;
+﻿using System.Collections.ObjectModel;
+
+namespace PANiXiDA.Core.ResultPattern;
 
 /// <summary>
 /// Represents an immutable error returned by an operation result.
@@ -28,7 +30,10 @@ public sealed record Error
 
         Message = message;
         Type = type;
-        Metadata = metadata ?? new Dictionary<string, object?>();
+        Metadata = new ReadOnlyDictionary<string, object?>(
+            metadata is null
+                ? []
+                : new Dictionary<string, object?>(metadata));
     }
 
     /// <summary>

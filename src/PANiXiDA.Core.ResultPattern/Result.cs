@@ -1,4 +1,6 @@
-﻿namespace PANiXiDA.Core.ResultPattern;
+﻿using System.Collections.ObjectModel;
+
+namespace PANiXiDA.Core.ResultPattern;
 
 /// <summary>
 /// Represents the result of an operation that can complete successfully or fail with an error.
@@ -17,6 +19,8 @@ public class Result
     /// <param name="errors">Errors associated with the result.</param>
     protected Result(bool isSuccess, Error[] errors)
     {
+        ArgumentNullException.ThrowIfNull(errors);
+
         if (isSuccess && errors.Length > 0)
         {
             throw new ArgumentException("Successful result cannot contain errors.", nameof(errors));
@@ -28,7 +32,7 @@ public class Result
         }
 
         IsSuccess = isSuccess;
-        Errors = errors;
+        Errors = new ReadOnlyCollection<Error>(errors.ToArray());
     }
 
     /// <summary>
@@ -161,6 +165,11 @@ public class Result
     public static Result Combine(params Result[] results)
     {
         ArgumentNullException.ThrowIfNull(results);
+
+        if (results.Any(static item => item is null))
+        {
+            throw new ArgumentException("Results collection cannot contain null values.", nameof(results));
+        }
 
         var errors = results
             .Where(item => item.IsFailure)

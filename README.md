@@ -459,6 +459,7 @@ The only consumer-side requirement is referencing the package from a compatible 
 ├── .gitattributes
 ├── .gitignore
 ├── Directory.Build.props
+├── Directory.Build.targets
 ├── Directory.Packages.props
 ├── global.json
 ├── version.json
@@ -471,6 +472,7 @@ The only consumer-side requirement is referencing the package from a compatible 
 * `src/` — library source code
 * `tests/` — automated tests
 * `Directory.Build.props` — shared MSBuild settings
+* `Directory.Build.targets` — shared package metadata and package content settings
 * `Directory.Packages.props` — centralized package versions
 * `global.json` — SDK and test runner configuration
 * `version.json` — Nerdbank.GitVersioning configuration
