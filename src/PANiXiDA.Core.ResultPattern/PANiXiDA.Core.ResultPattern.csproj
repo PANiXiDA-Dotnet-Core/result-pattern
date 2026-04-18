@@ -8,8 +8,8 @@
         <Description>A library for implementing the Result pattern in .NET applications with typed errors, result composition support, and convenient error handling without exceptions in business logic.</Description>
         <PackageTags>Result;ResultPattern;Errors;Functional;DotNet</PackageTags>
 
-        <RepositoryUrl>https://github.com/PANiXiDA-Dotnet-Core/panixida-core-result-pattern</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/PANiXiDA-Dotnet-Core/panixida-core-result-pattern</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/PANiXiDA-Dotnet-Core/result-pattern</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/PANiXiDA-Dotnet-Core/result-pattern</PackageProjectUrl>
     </PropertyGroup>
 
     <ItemGroup>
