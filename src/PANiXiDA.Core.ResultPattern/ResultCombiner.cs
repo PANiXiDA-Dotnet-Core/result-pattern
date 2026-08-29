@@ -76,6 +76,7 @@ public static class ResultCombiner
             () => Result.Success((first.Value, second.Value, third.Value)));
     }
 
+#pragma warning disable S2436 // Strongly typed overloads intentionally expose each supported result arity.
     /// <summary>
     /// Combines three generic results and continues the successful result with a function that returns another generic result.
     /// </summary>
@@ -364,6 +365,7 @@ public static class ResultCombiner
     /// <returns>
     /// The result returned by <paramref name="bind"/> if all results are successful; otherwise, a failed result with all collected errors.
     /// </returns>
+#pragma warning disable S107 // The seven typed inputs and continuation mirror the supported overload arity.
     public static Result<TOut> Combine<T1, T2, T3, T4, T5, T6, T7, TOut>(
         Result<T1> first,
         Result<T2> second,
@@ -379,6 +381,8 @@ public static class ResultCombiner
         return Combine(first, second, third, fourth, fifth, sixth, seventh)
             .Bind(values => bind(values.Item1, values.Item2, values.Item3, values.Item4, values.Item5, values.Item6, values.Item7));
     }
+#pragma warning restore S107
+#pragma warning restore S2436
 
     private static Result<TOut> CombineCore<TOut>(Func<Result> combine, Func<Result<TOut>> bind)
     {

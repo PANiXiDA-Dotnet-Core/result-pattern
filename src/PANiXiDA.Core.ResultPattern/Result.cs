@@ -32,7 +32,7 @@ public class Result
         }
 
         IsSuccess = isSuccess;
-        Errors = new ReadOnlyCollection<Error>(errors.ToArray());
+        Errors = new ReadOnlyCollection<Error>([.. errors]);
     }
 
     /// <summary>
